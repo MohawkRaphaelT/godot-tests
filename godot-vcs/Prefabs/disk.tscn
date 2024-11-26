@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://spl74hxhu3ub"]
+
+[ext_resource type="Script" path="res://addons/2d_shapes/shapes/Ellipse.gd" id="1_cy8s1"]
+[ext_resource type="PhysicsMaterial" uid="uid://gwf6vssm6g3v" path="res://Physics Materials/physmat_disc.tres" id="1_dpny3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kdljh"]
+
+[node name="Disk" type="RigidBody2D"]
+position = Vector2(600, 33)
+physics_material_override = ExtResource("1_dpny3")
+freeze_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kdljh")
+metadata/_edit_lock_ = true
+
+[node name="Ellipse" type="Node2D" parent="."]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_cy8s1")
+size = Vector2(79.8701, 79.8701)
+fill_color = Color(1, 0, 0, 1)
+metadata/_edit_lock_ = true
