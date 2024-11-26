@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://addons/2d_shapes/shapes/Ellipse.gd" id="2_i2hai"]
 [ext_resource type="PackedScene" uid="uid://spl74hxhu3ub" path="res://Prefabs/disk.tscn" id="2_tx5o0"]
 [ext_resource type="Script" path="res://addons/2d_shapes/shapes/Rectangle.gd" id="3_7vpu4"]
-[ext_resource type="Script" path="res://Scripts/Disk.cs" id="3_ockr6"]
 [ext_resource type="Script" path="res://Scripts/Bucket.cs" id="6_u5e0t"]
 [ext_resource type="Script" path="res://Scripts/ScoreUi.cs" id="7_ly17w"]
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="7_siwwl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ssfht"]
 font_size = 32
@@ -55,11 +55,6 @@ timeLabel = NodePath("../Time Display")
 
 [node name="Plinko" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
-
-[node name="Disk" parent="Plinko" instance=ExtResource("2_tx5o0")]
-position = Vector2(670, 57)
-freeze = true
-script = ExtResource("3_ockr6")
 
 [node name="Level Geometry" type="Node2D" parent="Plinko"]
 
@@ -1002,7 +997,19 @@ metadata/_edit_lock_ = true
 [node name="Destroyer" type="Node2D" parent="Plinko/Level Geometry/Buckets"]
 position = Vector2(528, -105)
 
+[node name="Player" type="Node2D" parent="Plinko"]
+position = Vector2(640, 50)
+script = ExtResource("7_siwwl")
+Prefab = ExtResource("2_tx5o0")
+
+[node name="Ellipse" type="Node2D" parent="Plinko/Player"]
+script = ExtResource("2_i2hai")
+size = Vector2(25, 25)
+fill_color = Color(0, 1, 0, 1)
+metadata/_edit_lock_ = true
+
 [node name="UI" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="ScoreUI" type="Label" parent="UI"]
 offset_left = 83.0
@@ -1012,6 +1019,7 @@ offset_bottom = 55.0
 text = "SCORE"
 label_settings = SubResource("LabelSettings_38e7i")
 script = ExtResource("7_ly17w")
+metadata/_edit_lock_ = true
 
 [connection signal="body_entered" from="Plinko/Level Geometry/Buckets/Bucket 1/Area2D" to="Plinko/Level Geometry/Buckets/Bucket 1/Area2D" method="OnBodyEntered"]
 [connection signal="body_entered" from="Plinko/Level Geometry/Buckets/Bucket 2/Area2D" to="Plinko/Level Geometry/Buckets/Bucket 2/Area2D" method="OnBodyEntered"]

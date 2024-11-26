@@ -6,7 +6,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_kdljh"]
 
 [node name="Disk" type="RigidBody2D"]
-position = Vector2(600, 33)
 physics_material_override = ExtResource("1_dpny3")
 freeze_mode = 1
 
